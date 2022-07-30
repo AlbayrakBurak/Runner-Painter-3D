@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerPosition=GetComponent<Transform>();
         startPosition=GetComponent<Transform>().position;
         animator=GetComponent<Animator>();
-
+        Cursor.visible=false;
         
         
     }
@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         swerve=Input.GetAxis("Horizontal");
         transform.Translate(new Vector3(swerve*swerveSpeed*Time.deltaTime,0,forwardSpeed*Time.deltaTime));
         if(stopPlayer==true){
+            Cursor.visible=true;
             forwardSpeed=0;
             swerveSpeed=2;
             animator.SetBool("walk_right",false);
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("look",false);
             animator.SetBool("walk_right",false);
             animator.SetBool("walk_left",false);
+            Cursor.visible=false;
         }
     }
 
